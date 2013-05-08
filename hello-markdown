@@ -1,0 +1,96 @@
+# Markdown Blog，你好!
+决定用最简单的方式写文章，结合着蚂蚁自己的Tornado个人主页，借力Bootstrap和typo.css，Markdown Blog就出炉了。
+
+## 基本流程
+写作
+
+    while not done:
+    1. cd /path/to/mdblog；
+    2. vim a-markdown-text-file，编写内容；
+    3. 休息，git commit -m 'comments' -a a-markdown-text-file。
+
+发布
+
+    1. 修改index文件；
+    2. git push，文件同步到Github；
+    3. 在蚂蚁的Linode主机git pull，或者写个Fabric脚本偷个懒。
+
+嗯，写文章就像写程序了，可以专注地码字了，而且借助Github还能做版本管理。
+
+或者想象力更丰富些：留言发表意见已经Out了，你可以直接Fork蚂蚁的文章，修改并pull request，然后蚂蚁合并回来，组成一篇更棒的文章。更神奇的是，如果你懒得购买VPS、搭自己的博客，你可以用这种方式来投稿到《技术派的奇幻漂流》。
+
+结论：git ＋ Github ＝ 神奇
+
+### 附录：Markdown语法
+参考 <http://daringfireball.net/projects/markdown/syntax>
+
+### Blockquote
+> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.
+
+> This is the first level of quoting.
+>
+> > This is nested blockquote.
+>
+> Back to the first level.
+
+> ## This is a header.
+> 
+> 1.   This is the first list item.
+> 2.   This is the second list item.
+> 
+> Here's some example code:
+> 
+>     return shell_exec("echo $input | $markdown_script");
+
+### List
+1.  This is a list item with two paragraphs. Lorem ipsum dolor
+    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+    mi posuere lectus.
+
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+    sit amet velit.
+
+2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+
+### Other
+1986\. What a great season.
+
+Here is an example of AppleScript:
+
+    tell application "Foo"
+        beep
+    end tell
+
+---
+
+### Link
+This is [an example](http://example.com/ "Title") inline link.
+
+[This link](http://example.net/) has no title attribute.
+
+This is [an example][id] reference-style link.
+
+[Google][]
+
+### Text style
+*single asterisks*
+
+\*this text is surrounded by literal asterisks\*
+
+### Code
+Use the `printf()` function.
+
+### Image
+![Alt text](/path/to/img.jpg)
+
+### Blackhole
+你看到的只是冰山一角。
+
+[id]: http://example.com/  "Optional Title Here"
+[Google]: http://google.com/
