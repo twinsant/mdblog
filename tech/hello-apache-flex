@@ -1,0 +1,39 @@
+# Hello Apache Flex
+
+1. Get and run the [Apache Flex SDK Installer](http://flex.apache.org/installer.html);
+
+2. Install [Adobe Flash Player Content Debugger](http://www.adobe.com/support/flashplayer/downloads.html);
+
+3. Edit `.bash_profile` on Mac:
+    <pre>
+    export PATH="/path/to/apache-flex-sdk/bin:${PATH}"
+    export PLAYERGLOBAL_HOME=/path/to/apache-flex-sdk/frameworks/libs/player
+    export FLASHPLAYER_DEBUGGER="/path/to/Flash Player Debugger.app/Contents/MacOS/Flash Player Debugger"
+    </pre>
+
+4. Crate [hello apache flex project](https://github.com/twinsant/hello-flex), Edit `HelloFlex.mxml`:
+    <pre>
+    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+    &lt;s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+        width="640" height="480"&gt;
+        &lt;s:layout&gt;
+            &lt;s:BasicLayout /&gt;
+        &lt;/s:layout&gt;
+        &lt;s:Label text="Hello World!" horizontalCenter="0" verticalCenter="0" /&gt;
+    &lt;/s:Application&gt;
+    </pre>
+
+5. Edit `Makefile`:
+    <pre>
+    SWF=HelloFlex.swf
+    MAIN=HelloFlex.mxml
+    $(SWF):
+        mxmlc $(MAIN)
+
+    clean:
+        rm $(SWF)
+    </pre>
+
+6. make and run.
