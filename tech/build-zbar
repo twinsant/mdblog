@@ -1,6 +1,8 @@
 # Clone and build ZBar on Ubuntu and Mac OS X
 
-ZBar is a very fast open source bar codes reader library(@twinsant just compare it with ZXing during a week, finally choose ZBar).
+[ZBar](http://zbar.sourceforge.net/) is a very fast open source bar codes reader library.
+
+I just compare it with ZXing during a week, finally choose ZBar.
 
 For me, zbarcam(video4linux required), zbarimg(ImageMagick reurired), Qt(Qt4 required) and GTK+/PyGTK(GTK+-2.x required) is useless.
 
@@ -8,75 +10,151 @@ Because I will use ZBar on iOS or Android devices, the above features will NOT b
 
 ## Ubuntu
 
-  hg clone http://zbar.hg.sourceforge.net:8000/hgroot/zbar
-  cd zbar
+    hg clone http://zbar.hg.sourceforge.net:8000/hgroot/zbar
+    cd zbar
 
-  ant-Thinkpad-R60:zbar ant $ hg summary
-  parent: 362:38e78368283d tip
-   Added tag iPhoneSDK-1.3.1 for changeset 5eb3c8786845
-   branch: default
-   commit: 320 unknown (clean)
-   update: (current)
+Let's do some check
 
-Make sure you have read HACKING file before build, autoconf, automake, libtool, gettext and pkg-config needed.
+    ant-Thinkpad-R60:zbar ant $ hg summary
+    parent: 362:38e78368283d tip
+    Added tag iPhoneSDK-1.3.1 for changeset 5eb3c8786845
+    branch: default
+    commit: 320 unknown (clean)
+    update: (current)
 
-  autoreconf -if
+Make sure you have read `HACKING` file before build, autoconf automake libtool gettext and pkg-config needed.
+
+    autoreconf -if
 
 ### Build android example
 
-Clone @twinsant fixed libiconv, which support android cross-compile:
+Clone fixed libiconv, which support android cross-compile:
 
-  https://github.com/twinsant/libiconv
+    https://github.com/twinsant/libiconv
 
-  cd android
+First, we will build the andorid sdk
+
+    cd android
 
 vim `local.properties`
 
-  sdk.dir=/path/to/android-sdks
-  ndk.dir=/path/to/android-ndk-r8b
-  iconv.src=/path/to/libiconv-1.14
+    sdk.dir=/path/to/android-sdks
+    ndk.dir=/path/to/android-ndk-r8b
+    iconv.src=/path/to/libiconv-1.14
 
 **Make sure you are using JDK1.6**. It seems that android sdk has bugs when using JDK1.7
 
-  ant-Thinkpad-R60:android ant $ locate javac|grep bin
-  /opt/jdk1.7.0_05/bin/javac
-  /usr/bin/javac
-  /usr/lib/jvm/java-6-openjdk-i386/bin/javac
-  /usr/lib/jvm/java-7-openjdk-i386/bin/javac
+    ant-Thinkpad-R60:android ant $ locate javac|grep bin
+    /opt/jdk1.7.0_05/bin/javac
+    /usr/bin/javac
+    /usr/lib/jvm/java-6-openjdk-i386/bin/javac
+    /usr/lib/jvm/java-7-openjdk-i386/bin/javac
 
-  ant clean
-  ant zbar-all
-  cd examples/CameraTest/
+    ant clean
+    ant zbar-all
 
-  ant-Thinkpad-R60:CameraTest ant $ cp ../../libs ./ -r
-  ant-Thinkpad-R60:CameraTest ant $ tree libs
-  libs
-  ├── armeabi
-  │   ├── libiconv.so
-  │   └── libzbarjni.so
-  ├── armeabi-v7a
-  │   ├── libiconv.so
-  │   └── libzbarjni.so
-  ├── x86
-  │   ├── libiconv.so
-  │   └── libzbarjni.so
-  └── zbar.jar
+Second, try the example
 
-  ant debug
-  ant installd
+    cd examples/CameraTest/
+
+Copy the sdk libs, build and install the apk
+
+    ant-Thinkpad-R60:CameraTest ant $ cp ../../libs ./ -r
+    ant-Thinkpad-R60:CameraTest ant $ tree libs
+    libs
+    ├── armeabi
+    │   ├── libiconv.so
+    │   └── libzbarjni.so
+    ├── armeabi-v7a
+    │   ├── libiconv.so
+    │   └── libzbarjni.so
+    ├── x86
+    │   ├── libiconv.so
+    │   └── libzbarjni.so
+    └── zbar.jar
+
+    ant debug
+    ant installd
 
 Enjoy ZBar scanning.
 
-## Troubleshoots on Ubuntu
-
-### JDK version
+### Troubleshoots on Ubuntu
 
 If you are using JDK1.7 to build zbar.jar but not JDK1.6
 
-  ant-Thinkpad-R60:CameraTest ant $ javac -version
-  javac 1.7.0_21
+    ant-Thinkpad-R60:CameraTest ant $ javac -version
+    javac 1.7.0_21
 
 you will in troubles when dex converting zbar.jar which include Config.class, Image.class, ImageScanner.class etc.
 
-  [dx] bad class file magic (cafebabe) or version (0033.0000)
-  ...
+    [dx] bad class file magic (cafebabe) or version (0033.0000)
+    ...
+
+Switch JDK1.6 will fix it.
+
+## Mac OS X
+
+brew install developer tools: autoconf automake libtool pkg-config gettext
+
+### gettext
+
+    YantongtekiMacBook-Pro:mdblog ant [master] $ brew info gettext
+    gettext: stable 0.18.2 (bottled)
+    http://www.gnu.org/software/gettext/
+
+    This formula is keg-only.
+    OS X provides the BSD gettext library and some software gets confused if both are in the library path.
+
+    /usr/local/Cellar/gettext/0.18.1.1 (366 files, 12M)
+    /usr/local/Cellar/gettext/0.18.2 (366 files, 11M)
+      Poured from bottle
+      https://github.com/mxcl/homebrew/commits/master/Library/Formula/gettext.rb
+
+Because default will use OS X gettext library, you will get errors when autoreconf
+
+    YantongtekiMacBook-Pro:zbar ant $ autoreconf -fi
+    configure.ac:143: warning: macro 'AM_ICONV' not found in library
+    glibtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, `config'.
+    glibtoolize: copying file `config/ltmain.sh'
+    glibtoolize: putting macros in AC_CONFIG_MACRO_DIR, `config'.
+    glibtoolize: copying file `config/libtool.m4'
+    glibtoolize: copying file `config/ltoptions.m4'
+    glibtoolize: copying file `config/ltsugar.m4'
+    glibtoolize: copying file `config/ltversion.m4'
+    glibtoolize: copying file `config/lt~obsolete.m4'
+    configure.ac:143: warning: macro 'AM_ICONV' not found in library
+    configure.ac:143: error: possibly undefined macro: AM_ICONV
+          If this token and others are legitimate, please use m4_pattern_allow.
+                See the Autoconf documentation.
+                autoreconf: /usr/local/Cellar/autoconf/2.69/bin/autoconf failed with exit status: 1
+
+Include the brew version will fix that
+
+    autoreconf -fi -I /usr/local/Cellar/gettext/0.18.2/share/aclocal
+
+Also patch configure.ac
+
+    diff -r 38e78368283d configure.ac
+    --- a/configure.ac  Sun Oct 14 23:02:08 2012 -0700
+    +++ b/configure.ac  Mon Jun 24 20:40:08 2013 +0800
+    @@ -7,6 +7,7 @@
+     AC_CONFIG_HEADERS([include/config.h])
+     AC_CONFIG_SRCDIR(zbar/scanner.c)
+     LT_PREREQ([2.2])
+    +AM_PROG_AR
+     LT_INIT([dlopen win32-dll])
+     LT_LANG([Windows Resource])
+
+Patch Makefile.am
+
+<script src="https://gist.github.com/twinsant/5849826.js"></script>
+
+Configure ZBar
+
+    ./configure --disable-video --without-gtk --without-qt --without-jpeg
+
+Patch android sdk
+
+<script src="https://gist.github.com/twinsant/5849875.js"></script>
+
+Follow the Ubuntu build phases to build the android sdk and example.

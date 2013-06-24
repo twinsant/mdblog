@@ -1,0 +1,25 @@
+# Responsive Web Design实战（一）
+
+Responsive Web Design，中文译名[自适应网页设计](http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html)，或响应式web设计。
+
+## 历史缘由
+
+在很久很久以前，只有3种设备，PC/Nokia功能机/稍高级的智能机。网站设计师和前端们为了对付这三个怪兽，采取的做法是准备example.com，wap.example.com和m.example.com。设计三遍，前端编写三遍。PC的显示器分辨率即使有差异，但在统计上看，完全可以用960等类似网格原则轻易驯服。
+
+后来，iPhone横空出世，开启了时空之门，随后Android及其变种设备怪兽如海潮般涌来。让我们看看现在的[可上网设备的屏幕有多少种分辨率](http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density)？
+
+如果你数的意犹未尽，这里还有一个[平板电脑和智能手机屏幕分辨率清单](http://www.binvisions.com/articles/tablet-smartphone-resolutions-screen-size-list/)。
+
+数量多不是问题，关键是没有统计规律，屏幕样本之间**差异过大**，训龙利器960网格原则失效了。
+
+总有些很懒的设计师和前端工程师，于是他/她们就借设备浏览器逐渐统一标准化的机会，提出了Responsive Web Design这个概念，希望减少工作中的重复劳动浪费。
+
+## 项目实战
+
+蚂蚁在最近开发的网站上都运用了[RWD](http://en.wikipedia.org/wiki/Responsive_web_design)这个实践，充分验证了2013年是RWD之年这一观点。
+
+请使用PC/iPhone/安卓手机肆意访问[云彩现场直播](http://v.iyuncai.com/)的网站，这里还有一个[直播页面](http://v.iyuncai.com/335310)。
+
+你看到的本站也采用了RWD技术。
+
+下一篇文章将介绍RWD对应的技术、方法、工具和扩展阅读资料。

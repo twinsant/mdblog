@@ -1,26 +1,4 @@
-# 借助Bootstrap进行Responsive Web Design实战
-
-Responsive Web Design，中文译名[自适应网页设计](http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html)，或响应式web设计。
-
-## 历史缘由
-
-在很久很久以前，只有3种设备，PC/Nokia功能机/稍高级的智能机。网站设计师和前端们为了对付这三个怪兽，采取的做法是准备example.com/wap.example.com/m.example.com。设计三遍，前端编写三遍。PC的显示器分辨率即使有差异，但在统计上看，完全可以用960等类似网格原则轻易驯服。
-
-后来，iPhone横空出世，开启了时空之门，随后Android及其变种设备怪兽如海潮般涌来。让我们看看现在的[可上网设备的屏幕有多少种分辨率](http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density)？
-
-如果你看的意犹未尽，这里还有一个[平板电脑和智能手机屏幕分辨率清单](http://www.binvisions.com/articles/tablet-smartphone-resolutions-screen-size-list/)。
-
-数量多不是问题，关键是没有统计规律，屏幕样本之间**差异过大**，训龙利器960网格原则失效了。
-
-总有些很懒的设计师和前端工程师，于是他/她们就提出了Responsive Web Design这个概念妄图一劳永逸地完成工作。
-
-蚂蚁就是这懒惰门派的一个成员。
-
-## 项目实战
-
-蚂蚁在最近开发的网站上都运用了[RWD](http://en.wikipedia.org/wiki/Responsive_web_design)这个实践，充分支持了2013年是RWD之年这一观点。
-
-请使用PC/iPhone/安卓手机肆意访问[云彩现场直播](http://v.iyuncai.com/)的网站，这里还有一个[直播页面](http://v.iyuncai.com/335310)。
+# Responsive Web Design实战（二）
 
 ### 技术之本
 
@@ -30,7 +8,7 @@ CSS中的@media是实现RWD的根基，这让网站可以查询来访设备的�
 
 也别忘记告诉手机不要自动缩放你的页面：
 
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 当然，后端有时也需要借助User-Agent信息做灵活地适配，裁剪页面。
 
@@ -57,21 +35,26 @@ CSS中的@media是实现RWD的根基，这让网站可以查询来访设备的�
 ### 资源
 
 Readings
+
 * [Why 2013 Is the Year of Responsive Web Design](http://mashable.com/2012/12/11/responsive-web-design/)
 * [The State Of Responsive Web Design](http://mobile.smashingmagazine.com/2013/05/29/the-state-of-responsive-web-design/)
 * [Implementing Off-Canvas Navigation For A Responsive Website](http://coding.smashingmagazine.com/2013/01/15/off-canvas-navigation-for-responsive-website/)
 * MSDN上的文章[Responsive Web Design](http://msdn.microsoft.com/en-us/magazine/hh653584.aspx)，看到MSDN这个词，让蚂蚁有了10年前在Windows下开发的青涩回忆。
 
 Book
+
 * [Responsive Web Design](http://book.douban.com/subject/6521003/)
 
 Tutorial
+
 * [Fluid Images](http://alistapart.com/article/fluid-images)
 
 Examples
+
 * [What The Heck Is Responsive Web Design?](http://johnpolacek.github.io/scrolldeck.js/decks/responsive/)
 
 Framework
 
 Gallery
+
 * [Media Queries](http://mediaqueri.es/)
