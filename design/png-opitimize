@@ -1,0 +1,11 @@
+# 优化PNG图片
+
+刚发现了[ImageOptim](http://imageoptim.com/)这一优化图片的工具，只有Mac版本。
+
+## 优化前205KB
+![优化前](/mdblog/img/png-opitimize/slide1-before.png)
+
+## 优化后181KB
+![优化后](/mdblog/img/png-opitimize/slide1-after.png)
+
+*设计师，你值得拥有！*
