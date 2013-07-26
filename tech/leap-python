@@ -1,0 +1,12 @@
+# 运行Leap Motion Python Sample
+
+    mkvirtualenv --python=python2.7 --no-site-packages --distribute leap
+    cdsitepackages
+    ln -s ~/leap/LeapSDK/lib/Leap.py
+    ln -s ~/leap/LeapSDK/lib/LeapPython.so
+
+连接Leap Motion控制器，运行：
+
+    python Sample.py
+
+Enjoy Leap Motion Python Hacking!

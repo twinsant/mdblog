@@ -1,4 +1,5 @@
 # Each line is a Markdown file
+tech/leap-python
 tech/leapd-daemon-lost
 design/png-opitimize
 tech/build-zbar
