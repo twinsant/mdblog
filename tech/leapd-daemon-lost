@@ -1,0 +1,15 @@
+# Leap Motion在Mac OS X 10.8.4提示出错
+
+    Leap Daemon is not running.: You may need to start it manually.
+
+可能的原因是leapd service没有运行。
+
+    ps -a|grep leapd
+
+如果你没看到leapd进程，你需要检查是否存在leapd守护进程：
+
+    cat /Library/LaunchAgents/com.leapmotion.leapd.plist
+
+不存在的话，参照[蚂蚁的daemon](https://gist.github.com/twinsant/6089446)文件写一个。然后运行即可：
+
+    sudo launchctl load /Library/LaunchAgents/com.leapmotion.leapd.plist
