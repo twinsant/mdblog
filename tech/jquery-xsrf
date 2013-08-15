@@ -1,0 +1,22 @@
+# 如何用jQuery发送XSRF的验证
+
+jQuery版本是1.8.3，后端是Tornado。
+
+借助[jQuery cookie插件](https://github.com/carhartl/jquery-cookie)，编写如下代码：
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        crossDomain: false, // obviates need for sameOrigin test
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type)) {
+                xhr.setRequestHeader("X-XSRFToken", $.cookie("_xsrf"));
+            }
+        }
+    });
+
+嗯，这段代码抄袭于Django [Cross Site Request Forgery protection](https://docs.djangoproject.com/en/dev/ref/contrib/csrf/)。
+
+> 调试Backbone.trigger过于投入，7-11的盒饭都没得挑了。。。
