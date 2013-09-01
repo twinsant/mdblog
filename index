@@ -1,5 +1,6 @@
 # Each line is a Markdown file
 tech/version-hell
+tech/jquery-xsrf
 tech/leap-python
 tech/leapd-daemon-lost
 design/png-opitimize
