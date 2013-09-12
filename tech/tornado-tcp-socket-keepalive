@@ -18,7 +18,7 @@
 常见的方法无非2种：
 
 1. 应用服务器协议里加上PING/PONG等类似心跳的机制。
-2. 采用[http://www.tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/](TCP Socket的keepalive)。
+2. 采用[TCP Socket的keepalive](http://www.tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/)。
 
 蚂蚁采用了后面一种，因为只有1个package的负担就可以激活连接：
 
