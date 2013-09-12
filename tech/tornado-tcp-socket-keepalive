@@ -1,0 +1,31 @@
+# 用Tornado的TCPServer编写长连接服务器
+
+话说tornado.netutil里的TCPServer和IOStream配合，我们就很容易地编写一个长连接服务器。
+
+    class ImAServer(TCPServer):
+        ...
+        def handle_stream(self, stream, address):
+            # handle the stream which is a socket wrapper
+
+客户端也类似一般轻松。
+
+但在测试中发现，如果连接长时间空闲，服务器端会出现以下错误：
+
+    [W 130910 11:05:55 iostream:432] Read error on 9: [Errno 110] Connection timed out
+
+思考了半天，翻阅了一些资料，蚂蚁估计是因为客户端在NAT之后，空闲TCP连接会被中间的路由断掉。
+
+常见的方法无非2种：
+
+1. 应用服务器协议里加上PING/PONG等类似心跳的机制。
+2. 采用[http://www.tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/](TCP Socket的keepalive)。
+
+蚂蚁采用了后面一种，因为只有1个package的负担就可以激活连接：
+
+    def handle_stream(self, stream, address):
+        stream.socket.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+        stream.socket.setsockopt(socket.SOL_TCP, socket.TCP_KEEPIDLE, 60)
+        stream.socket.setsockopt(socket.SOL_TCP, socket.TCP_KEEPINTVL, 5)
+        stream.socket.setsockopt(socket.SOL_TCP, socket.TCP_KEEPCNT, 20)
+
+经过跨越24小时的测试，问题消失。
