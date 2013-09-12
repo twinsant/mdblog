@@ -4,7 +4,7 @@
 
 解决方案如下
 
-  pip install tornado-redis==2.4.4
+    pip install tornado-redis==2.4.4
 
 从Windows开发时代的DLL地狱，到最近一个同事折腾编译gcc3.8，软件版本地狱一直伴随着程序员们。
 
