@@ -1,0 +1,51 @@
+# 奥特曼大战IE8
+
+![IE](/mdblog/img/ie8-keywords-indexof/ie8.jpg)
+
+基于Backbone.js和Require.js的系统在IE8下表现不正常，这完全不让蚂蚁意外，与IE这样的系统做兼容性调试也不是一次两次了，每次都会学到一点新东西。
+
+## 先入为主的误区
+
+主要的界面共有4个，2个工作正常，2个工作不正常。
+
+开头以为是Require.js的IE兼容性问题，研究了文档和StackOverflow后觉得还是自己的代码里的错误。
+
+之后蚂蚁以为又是IE的落单逗号问题，调试+VIM正则了半天，发现不是。
+
+    var a = [1, 2, 3,];
+    var d = {a:1, b:2, 3:c,};
+
+## 用调试工具定位
+
+虽然IE的开发人员工具比较难使，但总好过没有。认真看了下脚本控制台的错误信息，然后发现代码里给model定义了2个方法，一个叫delete，另一个叫export。
+
+蚂蚁猜这2个词是JavaScript的保留关键词，Google了下，果不其然。实际上Sublime Text早高亮提醒过，但蚂蚁忽略了，也不知道IE不允许方法名是保留关键词，这比Firefox、Chrome都要严格。
+
+另一个错误是IE8不支持数组的indexOf，只得在页面前修正一下：
+
+    if (!Array.prototype.indexOf)
+    {
+      Array.prototype.indexOf = function(elt /*, from*/)
+      {
+        var len = this.length >>> 0;
+
+        var from = Number(arguments[1]) || 0;
+        from = (from < 0)
+             ? Math.ceil(from)
+             : Math.floor(from);
+        if (from < 0)
+          from += len;
+
+        for (; from < len; from++)
+        {
+          if (from in this &&
+              this[from] === elt)
+            return from;
+        }
+        return -1;
+      };
+    }
+
+## 总结
+
+调试就像柯南破案，先定位疑点，然后顺着疑点推理，直到发现真相。
