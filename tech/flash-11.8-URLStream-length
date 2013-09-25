@@ -1,0 +1,21 @@
+# Flash 11.8的URLStream增加了只读属性length?
+
+蚂蚁手写的Flex版本的HTTP Live Streaming语音播放器在Flash 11.2正常，而11.8下却会出异常：
+
+    VerifyError: Error #1035 在IndexLoader中非法覆盖length
+
+看意思是蚂蚁写的IndexLoader不能覆盖基类URLStream的length属性。
+
+修改前：
+
+    public function get length():uint {
+        return segments.length;
+    }
+
+修改后：
+
+    public function get idxLength():uint {
+        return segments.length;
+    }
+
+对应修改调用的地方，问题消失。
