@@ -57,6 +57,10 @@ IE的另一个让网站开发人员头痛的问题是缓存，这个特性对动
             self.set_header('Cache-Control', 'no-cache')
             self.set_header('Expires', '-1')
 
+## encodeURI中文
+
+Windows下的IE会将ajax链接里的中文设置编码成GB2312，需要用encodeURI转移一下。
+
 ## 总结
 
 调试就像柯南破案，先定位疑点，然后顺着疑点推理，直到发现真相。
