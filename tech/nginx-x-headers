@@ -1,0 +1,15 @@
+# Nginx只会放过合法的X-Headers
+
+因为办公室机房用电不稳定的原因，我们迁移了一个子系统到IDC的主机。
+
+之前用lighttpd，迁移后使用Nginx做scgi_pass的反向代理。
+
+测试时发现客户端请求子系统的API无法通过验证，研究代码发现：
+
+> 代码中设计了API的验证信息放在HTTP头部，名称设为API_TOKEN
+
+而位于代理之后的Django应用无法获得这个信息，Nginx不会传递名称带有下划线的HTTP Header。
+
+通过[查阅资料](http://stackoverflow.com/questions/5920426/lost-custom-http-header-when-using-nginxpassenger/)我们验证了这一点。
+
+解决方法简单，但是麻烦些，就是修改所有客户端调用API，设置验证信息HTTP Header为X-API-TOKEN。
