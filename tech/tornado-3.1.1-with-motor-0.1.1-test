@@ -40,11 +40,11 @@ Digging into the source code:
 
 So I just hacking one line to fix it:
 
-   super(AsyncTestRunner, self).__init__(gen, lambda x: None)
+    super(AsyncTestRunner, self).__init__(gen, lambda x: None)
 
 
 After that, I found a commit on Motor's history:
 
-[Tornado 3 compatibility in async_test_engine](https://github.com/mongodb/motor/commit/b69b8fa04fbeb5df2056a77999ba79bfc757f53a)
+[Tornado 3 compatibility in async\_test\_engine](https://github.com/mongodb/motor/commit/b69b8fa04fbeb5df2056a77999ba79bfc757f53a)
 
 Hmm, this commit should merge into Motor release 0.1.1.
