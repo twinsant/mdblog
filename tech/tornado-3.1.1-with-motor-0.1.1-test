@@ -1,0 +1,50 @@
+# Tornado 3.1.1 with Motor 0.1.1 testing
+
+Just upgrade one project to Tornado 3.1.1 for better exception handling. Also, the project upgrade to Motor 0.1.1 using pip:
+
+    pip install -e git+https://github.com/mongodb/motor.git@0.1.1#egg=motor
+
+But when I run my tests based on motor's MotorTest:
+
+    class TestFoo(MotorTest):
+        ...
+
+        @async_test_engine()
+        def test_bar(self, done):
+            ...
+            yield motor.Op(foo.a_motor_op)
+
+The exception raised:
+
+    ...
+        self.final_callback(getattr(e, 'value', None))
+    TypeError: <lambda>() takes no arguments (1 given)
+
+Digging into the source code:
+
+    # motor/test/__init__.py
+    class AsyncTestRunner(gen.Runner):
+        def __init__(self, gen, timeout):
+            # Tornado 2.3 added a second argument to Runner()
+           super(AsyncTestRunner, self).__init__(gen, lambda: None)
+
+    # tornaod/gen.py
+    class Runner(object):
+        ...
+        def run(self):
+            ...
+            except (StopIteration, Return) as e:
+                ...
+                self.final_callback(getattr(e, 'value', None))
+                self.final_callback = None
+
+So I just hacking one line to fix it:
+
+   super(AsyncTestRunner, self).__init__(gen, lambda x: None)
+
+
+After that, I found a commit on Motor's history:
+
+[Tornado 3 compatibility in async_test_engine](https://github.com/mongodb/motor/commit/b69b8fa04fbeb5df2056a77999ba79bfc757f53a)
+
+Hmm, this commit should merge into Motor release 0.1.1.
