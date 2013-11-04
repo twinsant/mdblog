@@ -1,0 +1,17 @@
+# Tornado项目模版
+
+[tornado-zero](https://github.com/twinsant/tornado-zero)可以快速建立一个Tornado网站项目，内置jQuery、Bootstrap和Backbone.js。
+
+使用方法：
+
+    git clone https://github.com/twinsant/tornado-zero.git
+
+    cd tornado-zero
+    mkdir /your/project
+    git archive zero|tar -x -C /your/project
+
+    mkvirtualenv --python=python2.7 --no-site-pacakges --distribute codename
+    pip install -r requirements.txt
+
+    cp local_conf.py.sample local_conf.py
+    python main.py --debug
