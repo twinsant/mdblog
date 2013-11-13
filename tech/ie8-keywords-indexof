@@ -46,6 +46,8 @@
       };
     }
 
+IE8也不支持Array的map，那就召唤伟大的GitHub，使用[ECMAScript 5 compatibility shims for legacy JavaScript engines](https://github.com/kriskowal/es5-shim)吧。
+
 ## Cache!Ache!Ache
 
 IE的另一个让网站开发人员头痛的问题是缓存，这个特性对动态网页非常不友好。虽然用开发人员工具可以设置【缓存】》【始终从服务器中刷新】来方便调试，但无法解决用户端的问题。
