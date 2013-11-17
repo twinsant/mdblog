@@ -1,0 +1,55 @@
+# 用语音识别听写英文视频里的内容
+
+## Mac OS X的Dictation
+
+本来计划直接在Mac里播放mp4文件，然后用Dictation听写，但发现一旦呼叫出Dictation，视频就没声音了，看来Dictation会独占声音系统。
+
+这难不倒咱，蚂蚁还有手机。Hack步骤如下：
+
+1. 将mp4里的声音抽取出来：
+
+    ffmpeg -i Overview.mp4 -acodec copy Overview.aac
+
+2. 将aac文件复制到手机里，打开Dictation，播放。技术派的黑魔法就生效了：
+
+  > Starring's's's's's's's just clicked touch up photosDropLike dazzling a faxOr just have fun with your picturesWith your images are ready to popular image formats Porsche built-in sharing optionsAlright text laterBecame rich beautiful images has never been simpler or more fun
+
+3. 优化，看上面的听写效果，Dictation的听力还不够好，这样吧，给她一个喘息的时间，每次说完一句，暂停一下：
+
+  > Next leader is inspiring to design togetherBuilt to help create stunning images and edit your existing photosLater take full advantage of the latest technologiesUsed powerful tools like Jott enhance photosDrawOr paintMy dazzling effectsOr just have fun with your pictures.With your images are ready to popular image formats.Chair that built-in sharing options alright from pixel Mater.
+Making rich beautiful images as never been simpler or more fun.
+
+4. 持续优化，找恰当的时间点停顿，给Dictation足够的反应时间：
+
+  > Later is an inspiring beautiful design yetDon't.Create stunning messages and edit your existing photo.: Latest technologies like Jott and enhance photos.DropPaintMy dazzling a fax.Or just have fun with your pictures.With your images are ready to give them to popular image formats portion.Of them built in sharing option alright from pics later.Became rich beautiful images as everybody simpler or more fun.
+
+5. 换个口音，从United States改成United Kongdom：
+
+  > 's sister's sister'sContent is...
+
+  惨不忍睹。。。
+
+6. Canada口音？
+
+  > Later is an aspiring use to design together.To help create stunning images and edit your existing photos.Later take full advantage of the latest Mac technologies.Tools like Jott didn't have photos.FromOrbitLight dusting of fax.Or just have fun with your pictures.With your images are ready to evict popular image formats or shouldThe built-in sharing optionsAlright from pics later
+Making rich beautiful images has never been simpler or more fun.
+
+7. Australia口音？
+
+  > Starring suggestions design.Tricks that.
+
+  再次惨不忍睹。。。
+
+8. 看来Dictation基本能听懂点美式口音，加上半调子的蚂蚁，准确的视频字幕出炉了。
+
+  > Pixelmator is an inspiring, easy-to-use beautifully designed image editor built to help you creates stunning new images and edit your existing photos. Pixelmator takes full of advantage of technology ? draw, or paint. apply duzling effects or just have fun with pictures. once your images are ready, save them to popular image formats, share them ? buildin options on right in pixelmator. with pixelmator make rich beautiful images ? simpler and more fun.
+
+## 讯飞语音输入
+
+  > It should start a special,look at this picture what a lot of the hotel,from,oh,what is it,oh.
+
+讯飞可能还是擅长中文语音吧。。。
+
+## 总结
+
+工具辅助人，提高效率和准确度。
