@@ -1,0 +1,62 @@
+# Backbone.js wrapper div and how to render partial html in a View
+
+I want to render partial bootstrap dropdown menu in backbone. The menu looks like:
+
+    <ul class="dropdown-menu" role="menu" arial-labelledby="dLabel">
+        <li id="loading" role="presentation"><a role="menuitem" tabindex="-1" href="#">Loading...</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#logout">Logout</a></li>
+    </ul>
+
+Loading tag will be replaced with UserMenuView, which render method is:
+
+    render: function() {
+        var html = this.tpl(this.model.toJSON());
+        this.$el.html(html);
+        return this;
+    }
+
+And the underscore template:
+
+    <% for (var i=0;i<menu.length;i++) { %>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= menu[i].href %>"><%= menu[i].text %></a></li>
+    <% } %>
+    <% if (menu.length>0) { %>
+      <li role="presentation" class="divider"></li>
+    <% } %>
+
+Also the model data:
+
+    var data = {menu:[
+        {href:'#', text:'Action 1'}
+        , {href:'#', text:'Action 2'}
+    ]};
+
+The problem is after rendered, there will has a div wrapper for li, which breaks bootstrap styles.
+
+On stackoverflow there is a simlar question: [Backbone.js turning off wrap by div in render](http://stackoverflow.com/questions/7894253/backbone-js-turning-off-wrap-by-div-in-render).
+
+So I use `setElement`.
+
+But that didn't work for me.
+
+So I had to read the [Backbone.js source code](http://backbonejs.org/docs/backbone.html) and debug for the reason.
+
+Let's see the source code of setElement:
+
+    setElement: function(element, delegate) {
+        if (this.$el) this.undelegateEvents();
+        this.$el = element instanceof Backbone.$ ? element : Backbone.$(element);
+        this.el = this.$el[0];
+        if (delegate !== false) this.delegateEvents();
+        return this;
+    }
+
+The problem is here: `this.$el[0]`, when you have more than one html tag element in your template, only first one will be rendered.
+
+So I hacked it with one dirty line, finally my worked code:
+
+    render: function() {
+        var html = this.tpl(this.model.toJSON());
+        this.el = html; // I don't care binding events.
+        return this;
+    }
