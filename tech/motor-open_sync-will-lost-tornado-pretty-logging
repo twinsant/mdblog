@@ -1,0 +1,24 @@
+# motor MotorClient open_sync will lost tornado pretty logging
+
+In my main.py, I'm using motor:
+
+    ...
+    motor_client = motor.MotorClient().open_sync()
+    ...
+    if __name__ == '__main__':
+        ...
+        parse_command_line() # call enable_pretty_logging
+        ...
+
+Because motor start a private iolloop in open_sync, and ioloop.start may reset logging config:
+
+    ...
+    def start(self):
+        if not logging.getLogger().handlers:
+            ...
+            logging.basicConfig()
+    ...
+
+The pretty logging will be lost if you wrote code like me.
+
+So I just hacked commentting `logging.basicConfig()` to recover my pretty logging.
