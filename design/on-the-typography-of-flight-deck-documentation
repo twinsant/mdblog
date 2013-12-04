@@ -1,0 +1,22 @@
+# 字体排版与飞行安全
+
+NASA的一份报告《ON THE TYPOGRAPHY OF FLIGHT-DECK DOCUMENTATION》，针对备忘卡和飞行手册里字体排版给出一些建议，摘录部分如下:
+
+* 无衬线字体比衬线字体易读
+* 行间的空白不能少于字体尺寸的25-33%（蚂蚁：css里的line-height 1.5?）
+* 白底黑字比较安全
+
+正常光线条件下，背景与文字的颜色组合：
+
+<table class="table">
+    <tr><th>文字颜色</th><th>背景颜色</th><th>例子</th></tr>
+    <tr><td>黑</td><td>白</td><td style="color:black;background-color:white;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+    <tr><td>深蓝</td><td>白</td><td style="color:DarkBlue;background-color:white;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+    <tr><td>黑</td><td>黄</td><td style="color:black;background-color:yellow;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+    <tr><td>黑</td><td>橘黄</td><td style="color:black;background-color:orange;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+    <tr><td>白</td><td>深红、绿、褐</td><td style="color:white;background-color:darkred;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+    <tr><td>深绿、红</td><td>黑</td><td style="color:darkgreen;background-color:black;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+    <tr><td>白</td><td>黑</td><td style="color:white;background-color:black;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+    <tr><td>白</td><td>深灰</td><td style="color:white;background-color:darkgray;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+    <tr><td>黑</td><td>浅灰</td><td style="color:black;background-color:lightgray;">A quick brown fox jump over the lazy dog. 中文</td></tr>
+</table>
