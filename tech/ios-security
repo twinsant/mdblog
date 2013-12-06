@@ -1,0 +1,16 @@
+# iOS安全评估
+
+昨天遭遇了Safari崩溃，代码位于com.apple.coremedia.networkbuffering，直觉觉得Safaric有一个漏洞有可能可以利用。
+
+搜索资料的过程中发现了一篇有深度的文章：
+
+[Apple iOS 4 Security Evaluation](/static/pdf/ios-security-evaluation.pdf)
+
+阅读过程让蚂蚁想起了多年前用WinDbg和Softice做底层研发的那种感觉。
+
+摘录一些有趣的结论：
+
+1. 简单的锁屏密码（纯数字）在20分钟内可以被暴力破解（多年前蚂蚁用彩虹表破解Windows管理员密码时就学到了这点）。带TouchID的iPhone 5S相当安全。。。只要你保护好你的手指头。
+2. 越狱根本性将iOS的安全水平降低到和Android一样，换句话说，越狱的iOS设备安全性和Android一样：D
+
+话说BHDC是全球黑帽子大会么？等退休了研究研究。
