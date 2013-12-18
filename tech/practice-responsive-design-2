@@ -1,5 +1,9 @@
 # Responsive Web Design实战（二）
 
+在[Responsive Web Design实战（一）](/tech/practice-responsive-design-1)中我们介绍了基本的概念。
+
+这次我们说说细节。
+
 ### 技术之本
 
 CSS中的@media是实现RWD的根基，这让网站可以查询来访设备的屏幕宽度而做相应的设计调整。
@@ -16,11 +20,10 @@ CSS中的@media是实现RWD的根基，这让网站可以查询来访设备的�
 
 需要将屏幕宽度划分为少数几类，对应去做设计和实现。就像iOS开发会区分@2x，Android开发会区分ldpi/mdpi/hdpi一样。
 
-* 480
+* 320
+* 600
 * 768
-* 980
-* 1024
-* 1200
+* 1280
 
 ### 君子之善
 
