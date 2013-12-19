@@ -1,0 +1,9 @@
+# Hello PhantomJS
+
+![screen capture](/mdblog/img/hello-phantomjs/twinsant.png)
+
+    var page = require('webpage').create();
+    page.open('http://twinsant.com', function() {
+        page.render('twinsant.png');
+        phantom.exit();
+    });
