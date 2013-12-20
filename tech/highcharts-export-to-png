@@ -1,0 +1,100 @@
+# HighCharts export to PNG
+
+Show me the code:
+
+## Javascript
+
+    ...
+    var options = {
+        chart: {
+            type: 'column'
+        }
+        , title: {
+            text: title
+        }
+        , xAxis: {
+            categories: categories
+        }
+        , yAxis: {
+            title: {
+                text: title
+            }
+        }
+        , plotOptions: {
+            column: {
+                stacking: 'normal'
+                , dataLabels: {
+                    enabled: true
+                    , color: (Highcharts.theme && Highcharts.theme.dataLabelsColor || 'white')
+                }
+            }
+        }
+        , series: series
+    }
+    this.o = JSON.stringify(options);
+    // Make sure stringify before highcharts
+    // otherwise you will got Uncaught TypeError:
+    //  Converting circular structure to JSON
+    $('#canvas').highcharts(options);
+    $('#canvas').prepend('<button id="export">Export to PNG</button>')
+    ...
+
+    // Export button click event
+    , _export: function(obj) {
+        $.ajax({
+            type: 'post',
+            url: '/export/proxy/to/phantomjs',
+            data: obj,
+            success: function (data) {
+                window.open('data:image/png;base64,' + data, '_blank', 'width=670,height=480')
+            }
+        });
+    }
+    , onExport: function() {
+        var obj = {};
+        obj.options = this.o;
+        this._export(obj);
+    }
+
+## Python
+
+    class ExportProxyToPhantomJSHandler(BaseHandler):
+        @tornado.web.authenticated
+        @tornado.web.asynchronous
+        @gen.engine
+        def post(self):
+            options = json.loads(self.get_argument('options'))
+            body = json.dumps({
+                'infile':json.dumps(options)
+                , 'async': True
+            })
+            request = HTTPRequest('http://localhost:3003'
+                , method="POST"
+                , headers={'Content-Type':'application/json'}
+                , body=body)
+            http = SimpleAsyncHTTPClient()
+            response = yield Task(http.fetch, request)
+            if response.code!=200:
+                self.write({'error':response.code, 'msg':response.body})
+            else:
+                #img = base64.b64decode(response.body)
+                #f = open('/tmp/chart.png', 'wb')
+                #f.write(img)
+                #f.close()
+
+                self.write(response.body)
+            self.finish()
+
+## HighCharts exporting based on PhantomJS
+
+    phantomjs highcharts-convert.js -host 127.0.0.1 -port 3003
+
+PhantomJS has performance problem when run as a server, so don't use it for high traffic load.
+
+## TIPS
+
+* for Chinese characters
+
+    sudo apt-get install xfonts-wqy && sudo fc-cache -fv
+
+* hide series data which are zero in column chart, set data to null.
