@@ -1,0 +1,57 @@
+# PyChina Logo 设计
+
+基本思路：颜色采用和Python官方logo一致的黄色和蓝色，加强VI的识别度。形状上用和中国相关的一些元素。
+
+## 概念草图
+
+### 关键词：Python, 太极
+
+这是蚂蚁自己最喜欢的概念。就像The Zen of Python，禅道一体，简单实用。
+
+![tao](/mdblog/img/pychina-logo-concepts/tao.png)
+
+    The Zen of Python, by Tim Peters
+
+    Beautiful is better than ugly.
+    Explicit is better than implicit.
+    Simple is better than complex.
+    Complex is better than complicated.
+    Flat is better than nested.
+    Sparse is better than dense.
+    Readability counts.
+    Special cases aren't special enough to break the rules.
+    Although practicality beats purity.
+    Errors should never pass silently.
+    Unless explicitly silenced.
+    In the face of ambiguity, refuse the temptation to guess.
+    There should be one-- and preferably only one --obvious way to do it.
+    Although that way may not be obvious at first unless you're Dutch.
+    Now is better than never.
+    Although never is often better than *right* now.
+    If the implementation is hard to explain, it's a bad idea.
+    If the implementation is easy to explain, it may be a good idea.
+    Namespaces are one honking great idea -- let's do more of those!
+
+### 关键词：Python, 中国结
+
+和中国有关，但中国结本质是编造一个复杂的图形，蚂蚁觉得不Pythonic.
+
+![knot](/mdblog/img/pychina-logo-concepts/knot.png)
+
+## 资料
+
+## [中国结素材](http://www.pinterest.com/twinsant/chinese-knotting/)
+
+### Python官方Logo。
+
+蚂蚁觉得其实就是太极的变种啊。
+
+![python](/mdblog/img/pychina-logo-concepts/python.png)
+
+### 关键词：Python，龙
+
+Python中文社区目前的Logo，龙在西方文化里不是正能量的代表。
+
+![old](/mdblog/img/pychina-logo-concepts/old.png)
+
+抛砖引玉。你觉得Python + ? = PyChina。可以[在这里](https://github.com/PyChina/python.hub/issues/1)留下你的想法。
