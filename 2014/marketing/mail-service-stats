@@ -1,4 +1,4 @@
-# 国内邮箱统计
+# 国内邮箱统计及EDM相关工具
 
 1. 腾讯邮箱：qq.com。约45%
 2. 网易邮箱：163.com, 126.com。约45%
@@ -6,3 +6,28 @@
 4. Gmail：gmail.com。约5%
 
 可以做EDM参考。
+
+通过发送邮件测试，腾讯邮箱和Gmail 1分钟内必达，是收信最快的。网易邮箱和新浪邮箱 2分钟左右，收信较慢。这4个邮箱均可收集打开率数据。
+
+腾讯邮箱会提示链接来源未知。
+
+常用的一些inline css:
+
+* background-color
+* color
+* width
+* height
+* margin
+* border-radius
+* font-family
+* font-size
+* font-weight
+* line-height
+* text-align
+* text-decoration
+
+其他工具：
+
+ * [Email CSS支持列表](http://www.campaignmonitor.com/css/)
+ * [颜色对照表](http://www.360doc.com/content/07/0422/16/5368_461029.shtml)
+ * [GA URL Builder](https://support.google.com/analytics/answer/1033867?hl=en)
