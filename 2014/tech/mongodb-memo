@@ -1,0 +1,22 @@
+# MongoDB memo
+
+**不给数据库加索引**是新手工程师常犯的错误。蚂蚁交代，在迁移一个遗留系统时，当时忽略了这个问题，今天吃亏了。
+
+MongoDB调试数据库瓶颈：
+
+    db.currentOp()
+
+找到对应的查询，检查索引：
+
+    db.collection.op(spec).explain()
+
+创建对应的索引：
+
+    db.collection.ensureIndex(spec)
+
+mongos不支持profile.最好的方法是到mongod实例打开profiling.
+
+其他查看
+
+    db.serverStatus()
+    db.stats()
