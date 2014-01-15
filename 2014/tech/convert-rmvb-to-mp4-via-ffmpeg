@@ -1,0 +1,5 @@
+# 用FFmpeg将rmvb视频转换为mp4
+
+    ffmpeg -i fox.rmvb -codec:v libx264 -codec:a libfaac fox.mp4
+
+本来企图在iPad上播放，但在Mac OS X的Quicktime里2分钟后的视频就黑屏了。这个坑先留着，以后有时间了再调试。
