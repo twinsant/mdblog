@@ -1,0 +1,3 @@
+# How to add a framework in XCode
+
+Project > Target > Build Phasese > Link Binary  With Libraries > +
