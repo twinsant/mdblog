@@ -1,0 +1,12 @@
+# Linux生存手册
+
+记录小知识。
+
+## blockhosts
+
+如何关闭blockhosts的邮件通知？
+
+修改/etc/blockhosts.cfg
+
+  [mail]
+  MAIL = False
