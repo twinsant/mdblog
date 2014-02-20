@@ -8,5 +8,5 @@
 
 修改/etc/blockhosts.cfg
 
-  [mail]
-  MAIL = False
+    [mail]
+    MAIL = False
