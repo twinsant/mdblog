@@ -2,4 +2,5 @@
 
 前端常用的一些工具
 
-* [http://caniuse.com/](http://caniuse.com/) 桌面和移动浏览器是否支持HTML5、CSS3和SVG功能
+* [Can I use...](http://caniuse.com/) 桌面和移动浏览器是否支持HTML5、CSS3和SVG特定功能的速查表
+* [Less](http://lesscss.org/) 模块化CSS的好工具
