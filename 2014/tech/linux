@@ -2,6 +2,13 @@
 
 记录小知识。
 
+## git
+
+如何checkout特定的release?
+
+    git tag -l
+    git checkout tags/<tag_name>
+
 ## blockhosts
 
 如何关闭blockhosts的邮件通知？
