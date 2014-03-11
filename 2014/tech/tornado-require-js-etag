@@ -1,0 +1,15 @@
+# Require.js with Tornado
+
+In Tornado 3.1, compute_etag was added.
+
+> compute_etag sets the Etag header based on static url version.
+
+  This allows efficient If-None-Match checks against cached versions, and sends the correct Etag for a partial response (i.e. the same Etag as the full file).
+
+So it's important to configure the module file:
+
+    require.config({
+        urlArgs: 'bust=1'
+    })
+
+to load the changed files.
