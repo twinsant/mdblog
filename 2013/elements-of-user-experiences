@@ -1,3 +1,24 @@
 # 用户体验的要素
 
 ![用户体验的要素](/mdblog/img/elements-of-user-experiences/UE.png)
+
+蚂蚁最喜欢这个用户体验的概念模型。
+
+## 设计
+
+* Surface: Visual Design. 包括色彩，字体，构图，只关乎Look an feel
+
+## 技术
+
+* Skeleton: Information Design, Interface Design/Navigation Design 文案/信息图，UI模式 **Wireframes承上启下**
+* Structure: Interaction Design/Information Architeture 动作与反馈，概念模型，头脑风暴然后自下而上
+
+## 人文商业
+
+* Scope: Function Specifications/Content Requirements
+* Strategy: User Needs, Site Objectives 痛点，现场观察和交谈，细分，场景
+
+## Tips
+
+* 分解成Release
+* [The Elements Of User Experience](http://www.slideshare.net/candjcn/the-elements-of-user-experience-3241241)
