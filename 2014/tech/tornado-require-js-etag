@@ -13,3 +13,5 @@ So it's important to configure the module file:
     })
 
 to load the changed files.
+
+Make sure just add urlArgs config in top js file, the later loaded ones will overwrite this value.
