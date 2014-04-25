@@ -1,0 +1,41 @@
+# Backbone.js sub-view delegateEvents
+
+![flow](/mdblog/img/backbone-subview-delegateevents/flow.png)
+
+用Backbone.js写了一个预约日历界面。
+
+如图点击CalendarView里的一个日期, 界面会通过下面的代码切换到CalendarScheduleView:
+
+    , onDay: function(m) {
+        var calendarScheduleView = new CalendarScheduleView({model: m, cid:g_cid, delegate: this, days:this.model.days});
+        $('.phone').html(calendarScheduleView.render().el);
+    }
+
+注意`$('.phone').html(calendarScheduleView.render().el)`，它会引发一场血案。
+
+当点击返回，切换回日历界面的时候。CalendarView里的sub-view ReservedView会丢失它的点击事件：
+
+    , events: {
+        'click .current':'onClick'
+    }
+
+这就需要在ReservedView渲染后调用`delegateEvents`来恢复点击：
+
+    , render: function(){
+        if (this.model) {
+            this.$el.empty();
+            this.$el.html(this.tpl(this.model.toJSON()));
+            this.delegateEvents(this.events);
+        }else{
+            this.$el.html('');
+        }
+        return this;
+    }
+
+这是因为[delegateEvents只在View创建时调用一次](http://documentcloud.github.io/backbone/docs/backbone.html)。
+
+参考资料：
+
+* [Rendering Nested Views in Backbone.js](http://spin.atomicobject.com/2014/01/25/render-nested-views-backbonejs/)
+* [Backbone.js views delegateEvents do not get bound (sometimes)](http://stackoverflow.com/questions/5125958/backbone-js-views-delegateevents-do-not-get-bound-sometimes)
+* [Backbone.View#delegateEvents() is only called on view construction](https://github.com/jashkenas/backbone/issues/310)
