@@ -1,0 +1,17 @@
+# 什么是乐高机器人EV3（Lego Mindstorms EV3）
+
+EV3 2013年1月4日公布，2013年8月1日教育版（Education EV3 Core Set 45544）发布，2013年9月1日零售版(EV3 Home 31313）发布。
+
+相对上一代NXT2.0（8547）乐高机器人，编程主机（programmable brick）有了大升级，CPU升级到ARM9 300Hz，内存升级到64MB，是NXT主机内存的1000倍，运行Linux，增加了USB连接器和Micro SD卡（最大可扩容到32GB），支持WIFI（官方推荐NETGEAR N150 Wireless Adapter (WNA1100) 无线网卡）和可以连接到苹果的设备（使用应用商店里的EV3 3D Builder和EV3 Robot Commander）。
+
+EV3有5种基本模型，12种扩展模型，扩展模型的搭建图可以在线下载。
+
+EV3教育版和零售版相比，多了1个触摸传感器（Touch Sensor）、1个陀螺传感器（Gyroscopic Sensor）、1个超声波传感器（Ultrasonic Sensor）和1块充电电池（需单独购买充电器LEGO DC charger 8887），少了1个红外线传感器（Infrared Sensor)和1个远程控制器（Remote Control）。两个版本都带有乐高TECHNIC零件。
+
+教育版的扩展套装（Expansion Set 45560）可以单独购买，可以在核心套装的541块零件上，增加853块零件。不过，教育版核心套装和扩展套装合并后拼出的机器人模型数量没有零售版多。
+
+EV3不能使用NXT的编程软件（EV3 Software），零售版编程软件可以从网上免费下载，教育版的需要花99美元购买。EV3的编程软件还可以使用LabVIEW和RobotC。
+
+更多细节可以了解[官方英文常见问题](http://www.lego.com/en-us/mindstorms/support/faq/)
+
+既然你阅读到这里，赠送[官方下载连接](http://www.lego.com/en-us/mindstorms/?domainredir=mindstorms.lego.com) ，[英文和日文技术资料](http://www.ev-3.net/en/tech)以及[教育版和零售版比较（英文）](http://robotsquare.com/2013/11/25/difference-between-ev3-home-edition-and-education-ev3/)，[教育版和零售版软件比较（英文）](http://www.damienkee.com/home/2013/10/2/ev3-education-vs-ev3-home-software.html)
