@@ -1,0 +1,25 @@
+# 从知乎被黑说说OAuth这事
+
+刚好从Twitter开始推开放API蚂蚁就开始接触OAuth，后续又有些项目用新浪微博开放平台，还写了几个OAuth登陆QQ、百度、豆瓣的代码。
+
+[@李普君](http://www.zhihu.com/people/____)在[OAuth 漏洞预警：黄继新，你的帐号被黑啦](http://zhuanlan.zhihu.com/wooyun/19745587)
+
+提到的防御蚂蚁觉得有点不科学，想和@李普君 探讨一下。，因为这个被黑事件的原理看起来更像是知乎的工程师实现OAuth时检查state参数的逻辑有漏洞，任何用户可以直接登录微博帐号对应的知乎帐号。
+
+> state: 用于保持请求和回调的状态，在回调时，会在Query Parameter中回传该参数。开发者可以用这个参数验证请求有效性，也可以记录用户请求授权页前的位置。这个参数可用于防止跨站请求伪造（CSRF）攻击 
+
+参阅：[新浪微博Oauth2/authorize](http://open.weibo.com/wiki/Oauth2/authorize)
+
+> state：非必须参数，用于保持请求和回调的状态，授权服务器在回调时（重定向用户浏览器到“redirect_uri”时），会在Query Parameter中原样回传该参数。OAuth2.0标准协议建议，利用state参数来防止CSRF攻击。 
+
+参阅：[百度OAuth > Authorization Code授权](http://developer.baidu.com/wiki/index.php?title=docs/oauth/authorization)
+
+> 为了防止CSRF攻击，在请求人人OAuth 2.0 Authorize Endpoint的时候，需要使用state传递一个用户的唯一标识。授权页面在跳转到rediret_uri时这个标识会被原样返回，以保证授权流程中的安全性。人人网强烈推荐使用这种方式来保持用户的状态，防止CSRF攻击。 
+
+参阅：[人人网OAuth 2.0 简介](http://wiki.dev.renren.com/wiki/Authentication)
+
+这次攻击本质上是CSRF攻击，需要在Authorization Code的有效期内进行，通常为10分钟。
+
+理论上检查了state参数，检查对应的知乎用户id绑定的session，**即使重定向里的code被泄露，攻击者没有应用的secret也是无法实现攻击的**。
+
+看起来知乎的帐号体系流程上有bug。
