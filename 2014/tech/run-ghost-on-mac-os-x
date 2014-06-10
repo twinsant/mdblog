@@ -1,0 +1,55 @@
+# Run Ghost on Mac OS X
+
+## Upgrade npm
+
+    brew upgrade npm
+
+## Install Ghost depencencies
+
+    npm install --production
+
+## Troubleshootings
+
+### SQLite3
+
+    ERROR: dlopen(/Users/ant/hobbies/Ghost/node_modules/sqlite3/lib/binding/node-v11-darwin-x64/node_sqlite3.node, 1): no suitable image found.  Did find:
+        /Users/ant/hobbies/Ghost/node_modules/sqlite3/lib/binding/node-v11-darwin-x64/node_sqlite3.node: truncated mach-o error: segment __TEXT extends to 1077248 which is past end of file 113664
+
+     Error: dlopen(/Users/ant/hobbies/Ghost/node_modules/sqlite3/lib/binding/node-v11-darwin-x64/node_sqlite3.node, 1): no suitable image found.  Did find:
+        /Users/ant/hobbies/Ghost/node_modules/sqlite3/lib/binding/node-v11-darwin-x64/node_sqlite3.node: truncated mach-o error: segment __TEXT extends to 1077248 which is past end of file 113664
+        at Module.load (module.js:356:32)
+        at Function.Module._load (module.js:312:12)
+        at Module.require (module.js:364:17)
+        at require (module.js:380:17)
+        at Object.<anonymous> (/Users/ant/hobbies/Ghost/node_modules/sqlite3/lib/sqlite3.js:5:15)
+        at Module._compile (module.js:456:26)
+        at Object.Module._extensions..js (module.js:474:10)
+        at Module.load (module.js:356:32)
+        at Function.Module._load (module.js:312:12)
+        at Module.require (module.js:364:17)
+
+[SQLite3 doesn't install properly during npm install](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md#sqlite3-doesnt-install-properly-during-npm-install)
+
+    npm install sqlite3 --build-from-source=sqlite3
+
+### Casper theme
+
+ERROR: Failed to lookup view "index" in views directory "/Users/ant/hobbies/Ghost/content/themes/casper"
+ Rendering Error Page
+ Ghost caught a processing error in the middleware layer.
+ Error: Failed to lookup view "index" in views directory "/Users/ant/hobbies/Ghost/content/themes/casper"
+    at Function.app.render (/Users/ant/hobbies/Ghost/node_modules/express/lib/application.js:491:17)
+    at ServerResponse.res.render (/Users/ant/hobbies/Ghost/node_modules/express/lib/response.js:779:7)
+    at /Users/ant/hobbies/Ghost/core/server/controllers/frontend.js:108:21
+    at NearFulfilledProxy.when (/Users/ant/hobbies/Ghost/node_modules/when/when.js:501:43)
+    at Promise._message (/Users/ant/hobbies/Ghost/node_modules/when/when.js:426:25)
+    at deliver (/Users/ant/hobbies/Ghost/node_modules/when/when.js:319:7)
+    at Array.10 (/Users/ant/hobbies/Ghost/node_modules/when/when.js:316:63)
+    at runHandlers (/Users/ant/hobbies/Ghost/node_modules/when/when.js:385:12)
+    at drainQueue (/Users/ant/hobbies/Ghost/node_modules/when/when.js:836:3)
+    at process._tickDomainCallback (node.js:459:13)
+
+[Updating with the latest changes](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md#working-on-ghost-core)
+
+    git submodule init
+    git submodule update
