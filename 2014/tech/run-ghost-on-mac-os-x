@@ -53,3 +53,16 @@ ERROR: Failed to lookup view "index" in views directory "/Users/ant/hobbies/Ghos
 
     git submodule init
     git submodule update
+
+or
+
+    grunt init
+    grunt prod
+
+### [Bug: Javascript assets in /public redirect to subfolders](https://github.com/TryGhost/Ghost/issues/2467)
+
+    bower install --allow-root
+
+Ref [Allow bower install to run as root](https://github.com/TryGhost/Ghost/pull/2351)
+
+Also ref [Installation / Setup Instructions](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md#working-on-ghost-core) and [Troubleshooting / FAQ](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md#troubleshooting--faq)
