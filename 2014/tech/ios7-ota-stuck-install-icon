@@ -1,0 +1,10 @@
+# iOS 7 企业版安装图标不消失的问题
+
+这应该是iOS 7.0的一个bug，iOS7.1就不存在。
+
+请检查你的manifest.plist，看bundle-identifier是否和ipa的info.plist里的一致。
+
+参阅
+
+    * [installing in-house apps stuck/looping on iOS 7](http://stackoverflow.com/questions/19423742/installing-in-house-apps-stuck-looping-on-ios-7)
+    * [Remove install icon on iOS 7](http://stackoverflow.com/questions/18912938/remove-install-icon-on-ios-7)
