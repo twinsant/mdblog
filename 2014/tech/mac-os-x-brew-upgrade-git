@@ -1,0 +1,25 @@
+# Mac OS X升级Git 1.8.4.2
+
+检查git版本
+
+  git --version
+
+检查hombrew git版本
+
+  brew info git
+
+升级git版本
+
+  brew upgrade git
+
+出错处理
+
+  Error: The `brew link` step did not complete successfully
+  The formula built, but is not symlinked into /usr/local
+  You can try again using `brew link git'
+
+修改/usr/local/bin和/usr/local/lib/python2.7/site-packages/git_remote_helpers的属性
+
+  sudo chown your_user_name:your_user_group /usr/local/bin
+  sudo chown your_user_name:your_user_group /usr/local/lib/python2.7/site-packages/git_remote_helpers
+
