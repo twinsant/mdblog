@@ -6,7 +6,7 @@
 
 ## Install Ghost depencencies
 
-    npm install --production
+    npm install
 
 ## Troubleshootings
 
