@@ -66,3 +66,16 @@ or
 Ref [Allow bower install to run as root](https://github.com/TryGhost/Ghost/pull/2351)
 
 Also ref [Installation / Setup Instructions](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md#working-on-ghost-core) and [Troubleshooting / FAQ](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md#troubleshooting--faq)
+
+## Deploy twinsanthacked Ghost
+
+    git clone https://github.com/twinsant/Ghost.git <name>
+    cd <name>/content/themes/
+    rmdir casper
+    git clone https://github.com/twinsant/Casper.git casper
+    npm install
+    grunt init --force
+    grunt prod
+    cp config.example.js config.js
+
+Edit config.js, modify url and port.
