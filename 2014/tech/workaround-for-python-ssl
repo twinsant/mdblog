@@ -1,0 +1,17 @@
+# Workaround for Python ssl library
+
+When you got `<urlopen error [Errno 8] _ssl.c:504: EOF occurred in violation of protocol>` in self._sslobj.do_handshake, you could fix it like this:
+
+    import functools
+    import ssl
+
+    old_init = ssl.SSLSocket.__init__
+
+    @functools.wraps(old_init)
+    def ubuntu_openssl_bug_965371(self, *args, **kwargs):
+        kwargs['ssl_version'] = ssl.PROTOCOL_TLSv1
+        old_init(self, *args, **kwargs)
+
+    ssl.SSLSocket.__init__ = ubuntu_openssl_bug_965371
+
+Ref [Python HTTPS requests (urllib2) to some sites fail on Ubuntu 12.04 without proxy](http://askubuntu.com/questions/116020/python-https-requests-urllib2-to-some-sites-fail-on-ubuntu-12-04-without-proxy)

@@ -1,0 +1,55 @@
+# Root摩托罗拉ME722 Android 2.3.4
+
+1. 首先，确定使用哪个漏洞：一番搜索之后，选择了[CVE-2011-3874 - libsysutils rooting vulnerability](https://code.google.com/p/android/issues/detail?id=21681)，也就是著名的zergRush。
+
+2. 下载[zergRush.c](https://github.com/revolutionary/zergRush/blob/master/zergRush.c)
+
+3. 然后准备编译zergRush...就发现需要先[编译Android](https://source.android.com/source/building.html)...什么叫No zuo No die呢？
+
+  那么都需要什么呢？
+
+  * Ubuntu LTS (12.04)
+  * 16GB of RAM/swap
+  * 30GB or more of disk space
+  * 64-bit environment is required for Gingerbread (2.3.x) 
+  * 30GB of free disk space to complete a single build
+  * The source download is approximately 8.5GB in size
+  * Python 2.6 -- 2.7
+  * GNU Make 3.81 -- 3.82
+  * JDK 6 to build Gingerbread through KitKat
+  * Git 1.7 or newer
+
+  考虑到蚂蚁可怜的硬盘空间，还是去[DigitalOcean](https://www.digitalocean.com/)建一个云主机比较靠谱。
+  为什么选择DO呢？一是DO是按小时计费的，二是DO的Ticket响应速度非常快，10分钟内就可以解决问题。
+
+4. Build Android
+
+  * [Codenames, Tags, and Build Numbers](https://source.android.com/source/build-numbers.html)
+  * [Downloading and Building](https://source.android.com/source/building.html)
+  * [Initializing a Build Environment](https://source.android.com/source/initializing.html)
+  * [Downloading the Source](https://source.android.com/source/downloading.html)
+  * [Developing](https://source.android.com/source/developing.html)
+  * [Building the System](https://source.android.com/source/building-running.html)
+
+    make libdiskconfig
+    make libcutils
+
+    参考[Android Build System](http://elinux.org/Android_Build_System)
+
+5. 配置[agcc](https://code.google.com/p/android-cruft/downloads/list)
+
+  修正agcc.pl里硬编码路径的问题，使用find -name在Android目录里查找对应路径
+
+    export PATH=/root/android/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin:$PATH
+
+    ./agcc.pl zergRush.c -o zergRush -ldl -ldiskconfig -lcutils -L /root/android/out/target/product/generic/system/lib/
+
+6. 下载编译好的zergRush
+
+7. [运行](http://forum.xda-developers.com/showthread.php?t=1296916)
+
+8. 然后得到Hellions with BLUE flames，看起来手机的Android 2.3.4修补了这个漏洞。
+
+9. 然后尝试exploid2和RageAgainstTheCage，未果。
+
+10. 最后确定[MOTO在更新45.1.5版本2.3.4系统时，修补了2.3.4系统中的ZergRush漏洞，并且把BootLoader提升了一个序号，导致手机不能刷回45.1.3，且不能root](http://club.tech.163.com/bbs/mobile_2tt3/308115092.html)。这里标记好，以后有时间再采取“狸猫换太子”的办法root。
