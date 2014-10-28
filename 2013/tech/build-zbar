@@ -151,7 +151,7 @@ Patch Makefile.am
 
 Configure ZBar
 
-    ./configure --disable-video --without-gtk --without-qt --without-jpeg
+    ./configure --disable-video --without-imagemagick --without-gtk --without-qt
 
 Patch android sdk
 
