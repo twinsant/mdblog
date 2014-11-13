@@ -2,18 +2,21 @@
 
 ![The Business Model Canvas](http://twinsant.qiniudn.com/BMC.png?imageView/0/w/640/h/480)
 
-[Business Model Canvas](http://en.wikipedia.org/wiki/Business_Model_Canvas) 是一个蚂蚁非常信服的关于商业战略管理和精益创业的可视化概念模型。它抽象了商业活动中的重要元素来作为团队整体行动的指导。
+[Business Model Canvas](http://en.wikipedia.org/wiki/Business_Model_Canvas) 是一个关于商业战略管理和精益创业的可视化概念模型。它抽象了商业活动中的重要元素来作为团队整体行动的指导。
 
-* 基础设施 Infrastructure
- - **关键行动 Key Activities**
- - 关键资源 Key Resources
- - 协作网络 Partner Network
-* 交付 Offering
- - 价值承诺 [Value proposition](http://en.wikipedia.org/wiki/Value_proposition)
-* 客户 Customers
- - 客户细分 Customer Segments
- - 渠道  Channels
- - 客户关系 Customer Relationship
-* 财务 Finances
- - 成本结构 Cost Structure
- - 利润流  Revenue Streams
+* 基础设施 Infrastructure：对公司而言那些重要的但不紧急的事情
+ - ［我们每天都做成什么］**关键行动 Key Activities**：对有情怀的公司来说，是和那些站着挣钱有直接关系的、每天都要做好的事情；对没有节操的公司来说，是那些和挣钱有直接关系的、每天都要做好的事情。
+ - ［做成这些事情，我们需要什么］关键资源 Key Resources：能够保证按时做好关键行动，达成结果所需的资源。对所有的公司，时间是关键资源，对技术公司来说，还包括技术人员。
+ - ［做成这些事情，我们需要谁来帮助我们］协作网络 Partner Network：一个公司的资源是有限的，总需要外部合作伙伴来弥补自己不擅长的事情。
+
+* 交付 Offering：空谈误国，实干兴邦（Talk is cheap, DO small）
+ - ［我们解决了什么场景下的什么问题］价值承诺 [Value proposition](http://en.wikipedia.org/wiki/Value_proposition)：场景包括频次、规模。需要有一双观察现场和善于发现的眼睛。
+
+* 客户 Customers：具体的量化的数量级的细分的看得到找得着
+ - ［我们帮谁解决问题］客户细分 Customer Segments：资源有限，饭一口一口吃
+ - ［目标客户在哪儿］渠道  Channels：ROI是重要指标
+ - ［我们和客户一起愉快地玩耍多久］客户关系 Customer Relationship：客户生命期、品牌
+
+* 财务 Finances：在吃到下顿饭前活下去
+ - ［我们做好上面的事情要花多少钱］成本结构 Cost Structure：采取免费策略的前提是边际成本趋于0
+ - ［我们得有饭吃］利润流  Revenue Streams：现金流为正才能持久
