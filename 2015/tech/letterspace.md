@@ -1,9 +1,10 @@
 # Letterspace: Mac下的简约Markdown编辑器
 
 * 打开即用
-* #Markdown 内置
+* Markdown 内置
 
 可以使用Todo List
+
 - [x] 尝试Letterspace
 - [ ] 将文章发布到mdblog
 
