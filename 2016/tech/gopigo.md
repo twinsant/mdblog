@@ -6,13 +6,16 @@
 2. [Mac下往SD卡里安装树莓派操作系统Raspbian](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md)
 
     更新并自动设置时间
+    
     ```
     sudo apt-get update
     sudo apt-get upgrade
     sudo apt-get install ntpdate
     ```
+    
 3. [使用网线和路由器，在没有显示器的情况下配置树莓派](http://jacobjthomas.com/how-to-raspberry-pi-headless-setup-on-first-boot/)
 4. [使用wpa_cli添加无线网络](http://raspberrypihq.com/how-to-add-wifi-to-the-raspberry-pi/)
+
     ```
     add_network
     set_network <nid> ssid "<your ssid>"
